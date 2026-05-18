@@ -96,7 +96,7 @@ export function CalculatorPage() {
             <select
               value={selectedSecId}
               onChange={e => { setSelectedSecId(e.target.value); setCalcError('') }}
-              className="w-full bg-tg-secondary-bg text-tg-text rounded-xl px-4 py-3 text-sm outline-none"
+              className="w-full bg-tg-secondary-bg text-tg-text rounded-xl px-4 py-3 text-base outline-none"
             >
               <option value="">— Выберите ОФЗ —</option>
               {bonds.map(b => {
@@ -133,11 +133,11 @@ export function CalculatorPage() {
               value={amountStr}
               onChange={e => { setAmountStr(e.target.value); setCalcError('') }}
               placeholder="1000000"
-              className="w-full bg-tg-secondary-bg text-tg-text rounded-xl px-4 py-3 pr-8 text-sm outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+              className="w-full bg-tg-secondary-bg text-tg-text rounded-xl px-4 py-3 pr-8 text-base outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
             />
             <span className="absolute right-4 top-1/2 -translate-y-1/2 text-tg-hint text-sm pointer-events-none">₽</span>
           </div>
-          <div className="mt-1.5 flex gap-3 text-xs text-tg-hint">
+          <div className="mt-1.5 flex flex-wrap gap-3 text-xs text-tg-hint">
             {amount > 0 && <span>{fmt(amount)}</span>}
             {selectedBond && amount > 0 && estimatedBonds > 0 && (
               <span>≈ {estimatedBonds} облигаций по {fmt(bondPrice)}</span>
@@ -214,16 +214,16 @@ export function CalculatorPage() {
           {showAdvanced && (
             <div className="mt-3 space-y-4">
               {/* Reinvest toggle */}
-              <div className="flex items-center justify-between bg-tg-secondary-bg rounded-xl px-4 py-3">
-                <div>
+              <div className="flex items-center justify-between bg-tg-secondary-bg rounded-xl px-4 py-3 gap-3">
+                <div className="min-w-0">
                   <p className="text-sm font-medium">Реинвестировать купоны</p>
-                  <p className="text-xs text-tg-hint mt-0.5">Купоны идут на покупку новых облигаций</p>
+                  <p className="text-xs text-tg-hint mt-0.5">Купоны вкладываются в новые облигации</p>
                 </div>
                 <button
                   onClick={() => setReinvestCoupons(v => !v)}
-                  className={`w-11 h-6 rounded-full transition-colors relative shrink-0 ${reinvestCoupons ? 'bg-tg-button' : 'bg-tg-hint/40'}`}
+                  className={`w-11 h-6 rounded-full transition-colors relative shrink-0 overflow-hidden ${reinvestCoupons ? 'bg-tg-button' : 'bg-tg-hint/40'}`}
                 >
-                  <span className={`absolute top-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform ${reinvestCoupons ? 'translate-x-5' : 'translate-x-0.5'}`} />
+                  <span className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform ${reinvestCoupons ? 'translate-x-5' : 'translate-x-0'}`} />
                 </button>
               </div>
 
@@ -238,7 +238,7 @@ export function CalculatorPage() {
                     onChange={e => setCommissionStr(e.target.value)}
                     placeholder="0.05"
                     step="0.01"
-                    className="w-full bg-tg-secondary-bg text-tg-text rounded-xl px-4 py-3 pr-8 text-sm outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                    className="w-full bg-tg-secondary-bg text-tg-text rounded-xl px-4 py-3 pr-8 text-base outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
                   />
                   <span className="absolute right-4 top-1/2 -translate-y-1/2 text-tg-hint text-sm pointer-events-none">%</span>
                 </div>
@@ -255,7 +255,7 @@ export function CalculatorPage() {
                     onChange={e => setDepositStr(e.target.value)}
                     placeholder="18"
                     step="0.5"
-                    className="w-full bg-tg-secondary-bg text-tg-text rounded-xl px-4 py-3 pr-8 text-sm outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                    className="w-full bg-tg-secondary-bg text-tg-text rounded-xl px-4 py-3 pr-8 text-base outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
                   />
                   <span className="absolute right-4 top-1/2 -translate-y-1/2 text-tg-hint text-sm pointer-events-none">%</span>
                 </div>
