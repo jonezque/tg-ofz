@@ -12,7 +12,9 @@ try {
   // Running outside Telegram (e.g. plain browser during dev) — ignore
 }
 
-createRoot(document.getElementById('root')!).render(
+const rootEl = document.getElementById('root')
+if (!rootEl) throw new Error('Root element #root not found')
+createRoot(rootEl).render(
   <StrictMode>
     <App />
   </StrictMode>,
